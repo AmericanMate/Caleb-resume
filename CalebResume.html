@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caleb Clovis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF8F4;
+    --ink:#1B2B3A;
+    --sage:#7A8B7A;
+    --terracotta:#C17A5A;
+    --line:#D8D4CC;
+    --ink-soft:#566270;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  a{color:inherit;text-decoration:none;}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--sage);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .wrap{
+    max-width:680px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ===== Pulse divider — signature element ===== */
+  .pulse{
+    width:100%;
+    height:28px;
+    margin:6px 0 0;
+    overflow:hidden;
+  }
+  .pulse svg{display:block;width:100%;height:100%;}
+  .pulse path{
+    fill:none;
+    stroke:var(--sage);
+    stroke-width:1.4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+
+  /* ===== Header ===== */
+  header{
+    padding:64px 0 28px;
+    animation:rise 0.7s ease both;
+  }
+  @keyframes rise{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .name{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:clamp(2.4rem, 6vw, 3.4rem);
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+
+  .role{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin-top:10px;
+  }
+
+  .contact{
+    margin-top:22px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px 22px;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+  }
+  .contact a{border-bottom:1px solid transparent; transition:border-color .15s ease, color .15s ease;}
+  .contact a:hover{border-color:var(--sage); color:var(--ink);}
+
+  /* ===== Section structure ===== */
+  section{
+    padding:38px 0;
+    border-top:1px solid var(--line);
+  }
+  section:first-of-type{border-top:none;}
+
+  .section-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--terracotta);
+    margin-bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  /* ===== Entry ===== */
+  .entry{
+    margin-bottom:26px;
+  }
+  .entry:last-child{margin-bottom:0;}
+
+  .entry-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .entry-title{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:1.12rem;
+    color:var(--ink);
+  }
+
+  .entry-org{
+    font-size:0.93rem;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+
+  .entry-date{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.76rem;
+    color:var(--sage);
+    white-space:nowrap;
+    padding-top:3px;
+  }
+
+  ul.duties{
+    margin-top:12px;
+    padding-left:0;
+    list-style:none;
+  }
+  ul.duties li{
+    position:relative;
+    padding-left:18px;
+    margin-bottom:8px;
+    font-size:0.95rem;
+    color:var(--ink-soft);
+  }
+  ul.duties li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0.65em;
+    width:6px;
+    height:1.4px;
+    background:var(--sage);
+  }
+  ul.duties li:last-child{margin-bottom:0;}
+
+  /* ===== Education ===== */
+  .edu-gpa{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.85rem;
+    color:var(--terracotta);
+  }
+
+  /* ===== Honors grid ===== */
+  .honors{
+    display:grid;
+    gap:14px;
+  }
+  .honor-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+    padding-bottom:12px;
+    border-bottom:1px dashed var(--line);
+  }
+  .honor-row:last-child{border-bottom:none;padding-bottom:0;}
+  .honor-name{
+    font-size:0.95rem;
+    color:var(--ink);
+    font-weight:500;
+  }
+  .honor-date{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.76rem;
+    color:var(--sage);
+    white-space:nowrap;
+  }
+
+  /* ===== Clinical stats ===== */
+  .stat-row{
+    display:flex;
+    gap:36px;
+    flex-wrap:wrap;
+  }
+  .stat{
+    flex:1;
+    min-width:140px;
+  }
+  .stat-num{
+    font-family:'Source Serif 4', serif;
+    font-size:2.1rem;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1;
+  }
+  .stat-num span{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.95rem;
+    color:var(--sage);
+    font-weight:400;
+  }
+  .stat-cap{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+
+  /* ===== Skills/certs ===== */
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+  }
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.75rem;
+    color:var(--ink-soft);
+    border:1px solid var(--line);
+    padding:6px 11px;
+    border-radius:3px;
+    background:rgba(122,139,122,0.04);
+  }
+
+  footer{
+    padding:40px 0 60px;
+    text-align:center;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  @media (max-width: 480px){
+    header{padding:44px 0 22px;}
+    section{padding:30px 0;}
+    .entry-date{font-size:0.72rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="name">Caleb Clovis</div>
+    <div class="role">Pre&#8209;Medical Student &middot; Biology &amp; Biochemistry</div>
+    <div class="contact">
+      <a href="mailto:Caleb.Clovis@Vikings.Berry.Edu">Caleb.Clovis@Vikings.Berry.Edu</a>
+      <a href="tel:7274379531">727&#8209;437&#8209;9531</a>
+      <a href="https://linkedin.com/in/caleb-clovis" target="_blank" rel="noopener">linkedin.com/in/caleb-clovis</a>
+      <span>Rome, Georgia</span>
+    </div>
+  </header>
+
+  <div class="pulse" aria-hidden="true">
+    <svg viewBox="0 0 600 28" preserveAspectRatio="none">
+      <path d="M0,14 L150,14 L165,4 L180,24 L195,14 L600,14"/>
+    </svg>
+  </div>
+
+  <section aria-labelledby="education">
+    <div class="section-label" id="education">Education</div>
+    <div class="entry">
+      <div class="entry-top">
+        <div>
+          <div class="entry-title">Berry College</div>
+          <div class="entry-org">Bachelor of Science &mdash; Biochemistry &amp; Biology</div>
+        </div>
+        <div class="entry-date">Anticipated May 2027</div>
+      </div>
+      <div class="edu-gpa" style="margin-top:10px;">3.71 GPA</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="clinical">
+    <div class="section-label" id="clinical">Clinical &amp; Service Experience</div>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">160<span>+ hrs</span></div>
+        <div class="stat-cap">Medical Observation, Jan 2024&ndash;Present</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">555<span>+ hrs</span></div>
+        <div class="stat-cap">Volunteer Service, Aug 2022&ndash;Present</div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="experience">
+    <div class="section-label" id="experience">Experience</div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <div>
+          <div class="entry-title">Peer Pre&#8209;Med Advisor</div>
+          <div class="entry-org">Berry College Academic Success Center &middot; Mount Berry, Georgia</div>
+        </div>
+        <div class="entry-date">Jan 2024&ndash;Present</div>
+      </div>
+      <ul class="duties">
+        <li>Advise and mentor pre&#8209;health students, fostering trust and connection with faculty</li>
+        <li>Create and distribute pre&#8209;health marketing materials to raise awareness of campus events</li>
+        <li>Promote open communication through active listening and confidentiality, empowering students</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <div>
+          <div class="entry-title">Teaching Assistant</div>
+          <div class="entry-org">Berry College Biology Department &middot; Mount Berry, Georgia</div>
+        </div>
+        <div class="entry-date">Aug 2025&ndash;Dec 2025</div>
+      </div>
+      <ul class="duties">
+        <li>Taught students biological concepts and demonstrated laboratory procedures</li>
+        <li>Graded student papers and assignments</li>
+        <li>Held review sessions and tutored students before exams</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <div>
+          <div class="entry-title">Resident Assistant</div>
+          <div class="entry-org">Berry College Residence Life &middot; Mount Berry, Georgia</div>
+        </div>
+        <div class="entry-date">Apr 2024&ndash;May 2025</div>
+      </div>
+      <ul class="duties">
+        <li>Provided guidance and resources to residents, supporting academic, social, and personal challenges to promote well&#8209;being</li>
+        <li>Facilitated a supportive, inclusive community by organizing social events and educational programs</li>
+        <li>Enforced policies and safety procedures, responding to emergencies and resolving conflicts to maintain a safe living environment</li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="honors">
+    <div class="section-label" id="honors">Honors &amp; Organizations</div>
+    <div class="honors">
+      <div class="honor-row">
+        <div class="honor-name">President, Allied Health Club</div>
+        <div class="honor-date">Apr 2026&ndash;Present</div>
+      </div>
+      <div class="honor-row">
+        <div class="honor-name">Tri&#8209;Beta National Biological Honor Society</div>
+        <div class="honor-date">Feb 2026&ndash;Present</div>
+      </div>
+      <div class="honor-row">
+        <div class="honor-name">Dean's List</div>
+        <div class="honor-date">Fall 2024&ndash;Present</div>
+      </div>
+      <div class="honor-row">
+        <div class="honor-name">Young Physician's Initiative</div>
+        <div class="honor-date">Aug 2024&ndash;Present</div>
+      </div>
+      <div class="honor-row">
+        <div class="honor-name">Secretary, Allied Health Club</div>
+        <div class="honor-date">Aug 2024&ndash;Mar 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="skills">
+    <div class="section-label" id="skills">Certifications &amp; Skills</div>
+    <div class="tags">
+      <div class="tag">Bloodborne Pathogens Certification</div>
+      <div class="tag">Naloxone for Opioid Overdose Certification</div>
+      <div class="tag">Stop the Bleed / Tourniquet Certification</div>
+      <div class="tag">IR Spectroscopy</div>
+      <div class="tag">NMR Spectroscopy</div>
+      <div class="tag">Micropipetting</div>
+    </div>
+  </section>
+
+  <footer>
+    Caleb Clovis &middot; Rome, Georgia
+  </footer>
+
+</div>
+
+</body>
+</html>
